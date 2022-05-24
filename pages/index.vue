@@ -16,8 +16,9 @@
       <!--Summary-->
       <div class="space-y-4">
         <p class="font-semibold text-gray-700 leading-8">
-          Since 2012, I've worked as a full-stack developer, delivering productivity software for clients and other
-          developers that is well-designed, efficient, flexible and well-documented.
+          Since 2012, I've worked as a full-stack developer, delivering productivity software for clients and developers
+          alike. I'm a self-described client-side enthusiast, often reaching for Vue and Tailwind for new projects. When
+          I'm not building stuff, I'm busy being a dad, dabbling with music and photography or playing golf.
         </p>
       </div>
       <!--Projects-->

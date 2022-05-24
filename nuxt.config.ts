@@ -2,6 +2,7 @@ import { defineNuxtConfig } from 'nuxt';
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/content', '@nuxtjs/color-mode'],
   app: {
     head: {
       link: [
@@ -11,11 +12,10 @@ export default defineNuxtConfig({
       ],
     },
   },
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {},
+  content: {
+    highlight: {
+      // See the available themes on https://github.com/shikijs/shiki/blob/main/docs/themes.md#all-theme
+      theme: 'dracula',
     },
   },
-  // modules: ['@nuxt/content'],
 });

@@ -1,7 +1,3 @@
-<script lang="ts" setup>
-import './assets/main.css';
-</script>
-
 <template>
   <div class="bg-gray-5 min-h-screen font-sans">
     <!--Header-->
@@ -10,5 +6,3 @@ import './assets/main.css';
     <NuxtPage />
   </div>
 </template>
-
-<style></style>

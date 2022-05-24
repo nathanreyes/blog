@@ -2,26 +2,26 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
 
 module.exports = {
-  content: ['./App.vue', './layouts/**/*.{js,ts,vue}', './pages/**/*.{js,ts,vue}', './components/**/*.{js,ts,vue}'],
+  content: [
+    './App.vue',
+    './layouts/**/*.{js,ts,vue}',
+    './pages/**/*.{js,ts,vue}',
+    './components/**/*.{js,ts,vue}',
+    './content/**/*.{md,yml,json,json5,csv}',
+  ],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
-    colors: {
-      transparent: 'transparent',
-      current: 'currentColor',
-      black: colors.black,
-      white: colors.white,
-      gray: colors.slate,
-      red: colors.red,
-      yellow: colors.yellow,
-      blue: colors.blue,
-      green: colors.green,
-      accent: colors.sky,
-    },
     extend: {
+      colors: {
+        gray: colors.slate,
+      },
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
       },
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [
+    // require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+  ],
 };
