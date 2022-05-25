@@ -1,6 +1,6 @@
 <template>
-  <header class="flex justify-between items-center py-6 max-w-4xl mx-auto">
-    <nav class="flex text-gray-800 space-x-3">
+  <header class="flex justify-between items-center py-6 max-w-3xl mx-auto">
+    <nav class="flex text-gray-800 space-x-2">
       <NuxtLink
         v-for="link in links"
         :key="link.to"
@@ -90,13 +90,9 @@ export default {
         label: 'Nathan Reyes',
         to: '/',
       },
-      // {
-      //   label: 'Projects',
-      //   to: '/projects',
-      // },
       {
-        label: 'Blog',
-        to: '/blog',
+        label: 'Articles',
+        to: '/articles',
       },
       {
         label: 'Screencasts',
