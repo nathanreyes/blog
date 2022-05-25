@@ -18,8 +18,7 @@
         <p class="font-semibold text-gray-700 leading-8">
           Since 2012, I've worked as a full-stack developer, delivering productivity software for clients and developers
           alike. I'm a self-described client-side enthusiast, often reaching for Vue, Tailwind and Adonis for new
-          projects, before most end up in the side-project graveyard. When I'm not building stuff, I'm busy being a dad,
-          photography or playing golf.
+          projects, before most end up in the side-project graveyard.
         </p>
       </div>
       <!--Projects-->

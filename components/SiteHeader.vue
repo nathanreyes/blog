@@ -94,10 +94,6 @@ export default {
         label: 'Articles',
         to: '/articles',
       },
-      {
-        label: 'Screencasts',
-        to: '/screencasts',
-      },
     ]);
     return {
       links,
