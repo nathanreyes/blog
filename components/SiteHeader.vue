@@ -1,12 +1,12 @@
 <template>
   <header class="flex justify-between items-center py-6 max-w-3xl mx-auto">
-    <nav class="flex text-gray-800 space-x-2">
+    <nav class="flex text-accent-500 space-x-2">
       <NuxtLink
         v-for="link in links"
         :key="link.to"
         :to="link.to"
-        class="font-bold tracking-wide px-4 py-3 rounded-md hover:bg-gray-100"
-        active-class="text-white bg-gray-900 hover:bg-gray-800 shadow"
+        class="font-bold tracking-wide px-4 py-3 rounded-md hover:bg-accent-50"
+        active-class="text-white bg-accent-500 hover:bg-accent-700 shadow-md"
         >{{ link.label }}</NuxtLink
       >
     </nav>
@@ -14,69 +14,26 @@
       <!--About-->
       <NuxtLink
         to="/about"
-        class="inline-flex justify-center items-center p-3 rounded-full hover:bg-gray-100 cursor-pointer"
-        active-class="text-white bg-gray-900 hover:bg-gray-800 shadow"
+        class="inline-flex justify-center items-center p-3 rounded-full text-accent-500 hover:bg-accent-50 cursor-pointer"
+        active-class="text-white bg-accent-500 hover:bg-accent-700 shadow-md"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="feather feather-user"
-        >
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-          <circle cx="12" cy="7" r="4"></circle>
-        </svg>
+        <IconUser />
       </NuxtLink>
       <!--Twitter-->
       <a
         href="https://twitter.com/natedoggit"
-        class="inline-flex justify-center items-center p-3 rounded-full hover:bg-gray-100 cursor-pointer"
+        class="inline-flex justify-center items-center p-3 rounded-full text-accent-500 hover:bg-accent-50 cursor-pointer"
         target="_blank"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path
-            d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"
-          ></path>
-        </svg>
+        <IconTwitter />
       </a>
       <!--Github-->
       <a
         href="https://github.com/nathanreyes"
-        class="inline-flex justify-center items-center p-3 rounded-full hover:bg-gray-100 cursor-pointer"
+        class="inline-flex justify-center items-center p-3 rounded-full text-accent-500 hover:bg-accent-50 cursor-pointer"
         target="_blank"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="feather feather-github"
-        >
-          <path
-            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-          ></path>
-        </svg>
+        <IconGithub />
       </a>
     </div>
   </header>

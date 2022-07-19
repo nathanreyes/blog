@@ -14,6 +14,7 @@ module.exports = {
     extend: {
       colors: {
         gray: colors.gray,
+        accent: colors.indigo,
       },
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],

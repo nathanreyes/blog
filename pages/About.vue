@@ -5,7 +5,7 @@
       <div class="space-y-8">
         <h2 class="text-3xl text-gray-800 font-bold mb-2">About</h2>
         <p class="font-semibold text-gray-700 leading-8">
-          I was born and raised in Texas, where I currently reside with my wife Raine and 3 kiddos (Noah, Mia, Ari).
+          I was born and raised in Texas, where I currently reside with my wife Raine and 3 children (Noah, Mia, Ari).
           When I'm not building stuff, I'm busy being a dad, photography or playing golf.
         </p>
       </div>
@@ -13,9 +13,9 @@
       <div class="space-y-4">
         <h4 class="uppercase text-sm font-semibold tracking-wide text-gray-400">Goal</h4>
         <p class="font-semibold text-gray-700 leading-8 mt-6">
-          My goal is simple, to build great software and foster an environment where great software can be built. This
-          includes focusing on a few ideals like thoughtful communication, encouragement, empathy, honesty, product
-          ownership and an endless pursuit to learn new ideas.
+          Build great software and foster an environment where great software can be built. This includes focusing on a
+          few ideals like thoughtful communication, encouragement, empathy, honesty, product ownership and an endless
+          pursuit to learn new ideas.
         </p>
       </div>
       <!--Education-->
