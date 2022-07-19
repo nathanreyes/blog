@@ -7,16 +7,16 @@ const projects = [
     url: 'https://vcalendar.io',
   },
   {
-    icon: resolveComponent('IconMaximize'),
-    title: 'Vue Screen Utils',
-    description: 'A dependency-free collection of utility plugins and functions for using media queries in Vue 3.',
-    url: 'https://github.com/nathanreyes/vue-screen-utils',
-  },
-  {
     icon: resolveComponent('IconCoffee'),
     title: 'GifMyCoffee',
     description: `A free coffee timer app that helps people brew various coffee recipes using gifs.`,
     url: 'https://gifmycoffee.com',
+  },
+  {
+    icon: resolveComponent('IconMaximize'),
+    title: 'Vue Screen Utils',
+    description: 'A dependency-free collection of utility plugins and functions for using media queries in Vue 3.',
+    url: 'https://github.com/nathanreyes/vue-screen-utils',
   },
 ];
 </script>
