@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-3xl mx-auto px-4 bg-white dark:bg-gray-800 sm:rounded">
+  <div class="max-w-3xl mx-auto px-4 bg-white dark:bg-gray-800 sm:rounded mb-8">
     <!-- Fetch and display the Markdown document from current path -->
     <ContentDoc class="prose prose-gray dark:prose-invert max-w-none">
       <!-- Slot if document is not found -->

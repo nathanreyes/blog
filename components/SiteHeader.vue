@@ -1,5 +1,5 @@
 <template>
-  <header class="flex justify-between items-center py-6 max-w-3xl mx-auto">
+  <header class="flex justify-between items-center py-4 max-w-3xl mx-auto">
     <nav class="flex text-accent-500 space-x-2">
       <NuxtLink
         v-for="link in links"

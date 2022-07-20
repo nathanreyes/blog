@@ -19,6 +19,9 @@ const projects = [
     url: 'https://github.com/nathanreyes/vue-screen-utils',
   },
 ];
+
+const { data: articles } = await useAsyncData('articles', () => queryContent('/articles').limit(4).find());
+console.log('data', articles.value);
 </script>
 
 <template>
@@ -40,30 +43,35 @@ const projects = [
       <div class="space-y-4">
         <p class="text-gray-600 leading-8">
           Since 2012, I've worked as a full-stack developer, delivering productivity software for clients and developers
-          alike. I'm a self-described client-side enthusiast, often reaching for Vue, Tailwind and Adonis for new
-          projects.
+          alike. I'm a self-described client-side enthusiast, often reaching for
+          <a href="https://vuejs.org" target="_blank" class="text-accent-500 hover:text-accent-300">Vue</a>,
+          <a href="https://tailwindcss.com/" class="text-accent-500 hover:text-accent-300">Tailwind</a> and
+          <a href="https://adonisjs.com/" class="text-accent-500 hover:text-accent-300">AdonisJS</a> for new projects.
         </p>
       </div>
       <!--Projects-->
       <div>
-        <h4 class="uppercase text-sm font-semibold tracking-wide text-gray-400">Projects</h4>
+        <h4 class="text-2xl text-gray-800 pb-6 border-b font-semibold">Projects</h4>
         <div class="space-y-6 mt-6">
           <div v-for="{ icon, title, description, url } in projects" class="flex items-start space-x-6 h-12">
-            <component :is="icon" class="flex-shrink-0 w-6 h-6 text-accent-300" />
+            <component :is="icon" class="flex-shrink-0 w-5 h-5 text-accent-300" />
             <p class="flex-grow text-gray-600">
               <span class="text-gray-800 font-semibold tracking-wide">{{ title }}</span> &mdash; {{ description }}
             </p>
             <a
               :href="url"
-              class="flex-shrink-0 inline-block font-semibold text-indigo-500 hover:text-indigo-300 text-sm"
+              class="flex-shrink-0 inline-block font-semibold text-accent-500 hover:text-accent-300 text-sm"
               target="_blank"
               >Visit</a
             >
           </div>
         </div>
       </div>
-      <div class="space-y-4">
-        <h4 class="uppercase text-sm font-semibold tracking-wide text-gray-400">Latest Posts</h4>
+      <div>
+        <h4 class="text-2xl text-gray-800 pb-6 border-b font-semibold">Latest articles</h4>
+        <div class="space-y-6 mt-6">
+          <ArticleListItem v-for="article in articles" :key="article.date" :article="article" />
+        </div>
       </div>
     </div>
   </main>
