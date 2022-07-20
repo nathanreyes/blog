@@ -21,7 +21,6 @@ const projects = [
 ];
 
 const { data: articles } = await useAsyncData('articles', () => queryContent('/articles').limit(4).find());
-console.log('data', articles.value);
 </script>
 
 <template>
