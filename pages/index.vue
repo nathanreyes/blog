@@ -29,7 +29,7 @@ const { data: articles } = await useAsyncData('articles', () => queryContent('/a
     <div class="py-12">
       <div class="flex space-x-14">
         <div class="flex-shrink-0 flex-grow-0">
-          <img src="assets/profile.jpg" class="w-56 h-56 rounded-full shadow-xl" />
+          <img src="/profile.jpg" class="w-56 h-56 rounded-full shadow-xl" />
         </div>
         <div class="flex flex-col justify-center">
           <h3 class="text-gray-700 text-6xl font-medium">Howdy!</h3>
