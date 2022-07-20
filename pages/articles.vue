@@ -1,6 +1,8 @@
 <script setup>
 const include = ['title', 'description', 'image', '_path', 'date'];
-const { data: articles } = await useAsyncData('articles', () => queryContent('/articles').only(include).find());
+const { data: articles } = await useAsyncData('articles', () =>
+  queryContent('/articles').where({ published: true }).only(include).find()
+);
 </script>
 <template>
   <main class="max-w-3xl mx-auto px-4 mb-8">

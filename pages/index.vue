@@ -20,7 +20,9 @@ const projects = [
   },
 ];
 
-const { data: articles } = await useAsyncData('articles', () => queryContent('/articles').limit(4).find());
+const { data: articles } = await useAsyncData('articles', () =>
+  queryContent('/articles').where({ published: true }).limit(4).find()
+);
 </script>
 
 <template>
@@ -32,7 +34,7 @@ const { data: articles } = await useAsyncData('articles', () => queryContent('/a
           <img src="/profile.jpg" class="w-56 h-56 rounded-full shadow-xl" />
         </div>
         <div class="flex flex-col justify-center">
-          <h3 class="text-gray-700 text-6xl font-medium">Howdy!</h3>
+          <h3 class="text-gray-700 text-5xl font-extrabold">Howdy!</h3>
           <p class="text-gray-500 text-xl mt-8">I'm Nathan, a web developer in Texas.</p>
         </div>
       </div>
@@ -50,9 +52,9 @@ const { data: articles } = await useAsyncData('articles', () => queryContent('/a
       </div>
       <!--Projects-->
       <div>
-        <h4 class="text-2xl text-gray-800 pb-6 border-b font-semibold">Projects</h4>
+        <h4 class="text-2xl text-gray-800 pb-6 border-b font-extrabold">Projects</h4>
         <div class="space-y-6 mt-6">
-          <div v-for="{ icon, title, description, url } in projects" class="flex items-start space-x-6 h-12">
+          <div v-for="{ icon, title, description, url } in projects" class="flex items-start space-x-5 h-12">
             <component :is="icon" class="flex-shrink-0 w-5 h-5 text-accent-300" />
             <p class="flex-grow text-gray-600">
               <span class="text-gray-800 font-semibold tracking-wide">{{ title }}</span> &mdash; {{ description }}
@@ -67,7 +69,7 @@ const { data: articles } = await useAsyncData('articles', () => queryContent('/a
         </div>
       </div>
       <div>
-        <h4 class="text-2xl text-gray-800 pb-6 border-b font-semibold">Latest articles</h4>
+        <h4 class="text-2xl text-gray-800 pb-6 border-b font-extrabold">Latest articles</h4>
         <div class="space-y-6 mt-6">
           <ArticleListItem v-for="article in articles" :key="article.date" :article="article" />
         </div>

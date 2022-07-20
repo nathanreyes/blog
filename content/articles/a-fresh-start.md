@@ -2,6 +2,7 @@
 title: A fresh start
 description: Hitting reset and sharing for myself, I share about the importance of reflecting on personal growth.
 date: 2022-07-19
+published: true
 ---
 
 # A fresh start

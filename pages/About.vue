@@ -33,13 +33,15 @@
         <h4 class="uppercase text-sm font-semibold tracking-wide text-gray-400 w-1/3">Experience</h4>
         <div class="flex items-baseline justify-between">
           <p class="font-semibold text-gray-700 leading-8">
-            Vue/Rails/Postgres Developer @ <a href="https://moxiworks.com" class="text-blue-400 underline">MoxiWorks</a>
+            Vue/Rails Developer @
+            <a href="https://moxiworks.com" class="text-accent-500 hover:text-accent-300 underline">MoxiWorks</a>
           </p>
           <p class="text-sm font-semibold text-gray-400">Apr 2021 - Present</p>
         </div>
         <div class="flex justify-between items-baseline">
           <p class="font-semibold text-gray-700 leading-8">
-            Vue/.NET Developer @ <a href="https://asteris.com/" class="text-blue-400 underline">Asteris</a>
+            Vue/.NET Developer @
+            <a href="https://asteris.com/" class="text-accent-500 hover:text-accent-300 underline">Asteris</a>
           </p>
           <p class="text-sm font-semibold text-gray-400">May 2019 - April 2021</p>
         </div>
@@ -61,16 +63,24 @@
           <p class="text-sm font-semibold text-gray-400">Sep 2008 - Dec 2013</p>
         </div>
       </div>
-      <!--Open Source-->
+      <!--Projects-->
       <div class="space-y-4">
-        <h4 class="uppercase text-sm font-semibold tracking-wide text-gray-400">Open Source</h4>
-        <div class="flex justify-between">
-          <p class="font-semibold text-gray-600 leading-8">
-            <a href="https://vcalendar.io" class="text-blue-400 underline" target="_blank">V-Calendar</a>, a calendar
-            and date picker plugin for Vue
-          </p>
-          <p class="text-sm font-semibold text-gray-400">Aug 2018 - Present</p>
-        </div>
+        <h4 class="uppercase text-sm font-semibold tracking-wide text-gray-400">Projects</h4>
+        <p class="font-semibold text-gray-600 leading-8">
+          <a href="https://vcalendar.io" class="text-accent-500 hover:text-accent-300 underline" target="_blank"
+            >V-Calendar</a
+          >, an elegant calendar and datepicker plugin for Vue.
+        </p>
+        <p class="font-semibold text-gray-600 leading-8">
+          <a href="https://vcalendar.io" class="text-accent-500 hover:text-accent-300 underline" target="_blank"
+            >GifMyCoffee</a
+          >, a free coffee timer app that helps people brew various coffee recipes using gifs.
+        </p>
+        <p class="font-semibold text-gray-600 leading-8">
+          <a href="https://vcalendar.io" class="text-accent-500 hover:text-accent-300 underline" target="_blank"
+            >Vue Screen Utils</a
+          >, a dependency-free collection of utility plugins and functions for using media queries in Vue 3.
+        </p>
       </div>
     </div>
   </main>
