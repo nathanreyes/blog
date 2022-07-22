@@ -1,15 +1,19 @@
 ---
-title: Vue Screen Utils
-summary: I share how this set of utility use-functions can be useful for web applications.
+title: 'Vue Screen Utils: Part 1'
+summary: In part 1 of this 3-part series, I'll share how this utility is used to evaluate simple media queries.
 date: 2022-07-21
 published: true
 ---
 
-# Vue Screen Utils
+# Vue Screen Utils: Part 1
 
-[Media queries](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia) and [ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) are some of the most useful ways to get notifications about size and layout changes in your web application. With Vue 3, we can harness their power in some pretty interesting ways. This article will explain how [vue-screen-utils](https://github.com/nathanreyes/vue-screen-utils) does just that.
+[Media queries](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia) and [ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) are some of the most useful ways to get notifications about size and layout changes in your web application. With Vue 3, we can harness their power in some pretty interesting ways.
 
-To get started with this plugin, import it into your Vue application.
+In this 3-part series, we'll explore how [vue-screen-utils](https://github.com/nathanreyes/vue-screen-utils) does just that.
+
+In this article, we'll explain how the package is used to evaluate simple media queries. In part 2, we'll explore how it is used to observe size changes with HTML elements using ResizeObserver. Finally, in part 3 will touch on a more specialized use-case of creating computed values from different screen sizes in a simple, declarative manner.
+
+To get started, import the package into your Vue application.
 
 ```sh
 npm i vue-screen-utils
@@ -85,7 +89,7 @@ Then, we extract the media query event listener into a separate function so that
 
 Then, we create the query and register the media query handler just as before. There is some extra protection added to verify that the `matchMedia` api is supported. Also, we wait until the component is mounted to ensure that the `window` is available.
 
-### Refactor
+## Refactor
 
 While we now have a working pattern for working with media queries in Vue, there is still an opportunity for encapsulating this logic so that it can be made more reusable in the future, as well as cleaning up the code from our consumer components.
 
@@ -95,6 +99,49 @@ We can declaratively express how we'd like such an api to work.
 <script setup>
 import { useMediaQuery } from './useMediaQuery';
 
-const matches = useMediaQuery('(max-width: 400px)');
+const { matches } = useMediaQuery('(max-width: 400px)');
 </script>
 ```
+
+Here, there is clearly less mental overhead involved in understanding the objective, which is simply evaluating a query. Less code allows our component to be more easily understood in real-world use, and makes working with media queries more maintainable since it is relegated to a single function.
+
+```js
+// useMediaQuery.ts
+import { ref, onUnmounted } from 'vue';
+
+export function useMediaQuery(query: string, callback: (ev?: MediaQueryListEvent) => void) {
+  let mediaQuery: MediaQueryList | undefined;
+  const isSupported = window && 'matchMedia' in window;
+  const matches = ref(false);
+
+  // Wrap optional callback to assign `matches`
+  const _callback = (ev: MediaQueryListEvent) => {
+    if (callback) callback(ev);
+    matches.value = ev.matches;
+  };
+
+  const cleanup = () => {
+    if (mediaQuery) {
+      mediaQuery.removeEventListener('change', _callback);
+      mediaQuery = undefined;
+    }
+  };
+  cleanup();
+
+  if (isSupported && query) {
+    mediaQuery = window.matchMedia(query);
+    mediaQuery.addEventListener('change', _callback);
+    matches.value = mediaQuery.matches;
+  }
+
+  onUnmounted(() => cleanup());
+
+  return { matches, cleanup };
+}
+```
+
+The function is almost identical to the code we had in the Vue component. This time, we extract the code for removing the event listener into a separate function so that it can be exported for the consumer to manually call if desired. We still cleanup in `onUnmounted` so manually calling `cleanup` would not be commonly needed.
+
+Also, we want to support passing though a callback function, just in case the consumer is interested in inspecting the raw event data. The callback is wrapped into a separate callback function so that the exported `matches` ref can be updated.
+
+## Wrap-up
