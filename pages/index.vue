@@ -70,7 +70,7 @@ const { data: articles } = await useAsyncData('articles', () =>
       </div>
       <div>
         <h4 class="text-2xl text-gray-800 pb-6 border-b font-extrabold">Latest articles</h4>
-        <div class="space-y-6 mt-6">
+        <div class="space-y-10 mt-6">
           <ArticleListItem v-for="article in articles" :key="article.date" :article="article" />
         </div>
       </div>
