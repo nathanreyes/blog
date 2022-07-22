@@ -1,7 +1,7 @@
 <script setup>
 const include = ['title', 'description', 'image', '_path', 'date'];
 const { data: articles } = await useAsyncData('articles', () =>
-  queryContent('/articles').where({ published: true }).only(include).find()
+  queryContent('/articles').where({ published: true }).sort({ date: 1 }).only(include).find()
 );
 </script>
 <template>

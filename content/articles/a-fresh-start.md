@@ -26,7 +26,7 @@ Over time, an inbalance forms. We feed on the bleeding edge of what is happening
 ### Finding your own way
 
 In processing all of this, I came to a realization that I wish I had discovered earlier, that
-forming an identity based other people's opinions or your own accomplishments is an empty path that leads to pain and heartache. The mission of work shouldn't be to prove one's self to others, but simply to document the path with lessons learned along the way.
+forming an identity based other people's opinions of yourself or your accomplishments is an empty path that leads to pain and heartache. Personally speaking, I decided that the goal of work shouldn't be to prove one's self to others, but to genuinely enjoy creating great stuff, have fun and simply to document the path with lessons learned along the way.
 
 In that vein, I hope to start fresh with no expectation of what the site should be or why it should exist, but simply as an outlet of expression for myself.
 
