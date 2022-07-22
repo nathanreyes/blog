@@ -1,6 +1,6 @@
 ---
 title: Vue Screen Utils
-description: I share how this set of utility use-functions can be useful for web applications.
+summary: I share how this set of utility use-functions can be useful for web applications.
 date: 2022-07-21
 published: true
 ---

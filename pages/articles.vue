@@ -1,5 +1,5 @@
 <script setup>
-const include = ['title', 'description', 'image', '_path', 'date'];
+const include = ['title', 'summary', 'image', '_path', 'date'];
 const { data: articles } = await useAsyncData('articles', () =>
   queryContent('/articles').where({ published: true }).sort({ date: 1 }).only(include).find()
 );

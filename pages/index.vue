@@ -3,19 +3,19 @@ const projects = [
   {
     icon: resolveComponent('IconCalendar'),
     title: 'V-Calendar',
-    description: 'An elegant calendar and datepicker plugin for Vue.',
+    summary: 'An elegant calendar and datepicker plugin for Vue.',
     url: 'https://vcalendar.io',
   },
   {
     icon: resolveComponent('IconCoffee'),
     title: 'GifMyCoffee',
-    description: `A free coffee timer app that helps people brew various coffee recipes using gifs.`,
+    summary: `A free coffee timer app that helps people brew various coffee recipes using gifs.`,
     url: 'https://gifmycoffee.com',
   },
   {
     icon: resolveComponent('IconMaximize'),
     title: 'Vue Screen Utils',
-    description: 'A dependency-free collection of utility plugins and functions for using media queries in Vue 3.',
+    summary: 'A dependency-free collection of utility plugins and functions for using media queries in Vue 3.',
     url: 'https://github.com/nathanreyes/vue-screen-utils',
   },
 ];
@@ -54,10 +54,10 @@ const { data: articles } = await useAsyncData('articles', () =>
       <div>
         <h4 class="text-2xl text-gray-800 pb-6 border-b font-extrabold">Projects</h4>
         <div class="space-y-6 mt-6">
-          <div v-for="{ icon, title, description, url } in projects" class="flex items-start space-x-5 h-12">
+          <div v-for="{ icon, title, summary, url } in projects" class="flex items-start space-x-5 h-12">
             <component :is="icon" class="flex-shrink-0 w-5 h-5 text-accent-300" />
             <p class="flex-grow text-gray-600">
-              <span class="text-gray-800 font-semibold tracking-wide">{{ title }}</span> &mdash; {{ description }}
+              <span class="text-gray-800 font-semibold tracking-wide">{{ title }}</span> &mdash; {{ summary }}
             </p>
             <a
               :href="url"

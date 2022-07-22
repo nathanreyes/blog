@@ -11,14 +11,6 @@
       >
     </nav>
     <div class="flex items-center space-x-2">
-      <!--About-->
-      <NuxtLink
-        to="/about"
-        class="inline-flex justify-center items-center p-3 rounded-full text-accent-500 hover:bg-accent-50 cursor-pointer"
-        active-class="text-white bg-accent-500 hover:bg-accent-700 shadow-md"
-      >
-        <IconUser />
-      </NuxtLink>
       <!--Twitter-->
       <a
         href="https://twitter.com/natedoggit"
@@ -50,6 +42,10 @@ export default {
       {
         label: 'Articles',
         to: '/articles',
+      },
+      {
+        label: 'About',
+        to: '/about',
       },
     ]);
     return {
