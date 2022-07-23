@@ -9,9 +9,7 @@ published: true
 
 [Media queries](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia) and [ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) are some of the most useful ways to get notifications about size and layout changes in your web application. With Vue 3, we can harness their power in some pretty interesting ways.
 
-In this 3-part series, we'll explore how [vue-screen-utils](https://github.com/nathanreyes/vue-screen-utils) does just that.
-
-In this article, we'll explain how the package is used to evaluate simple media queries. In part 2, we'll explore how it is used to observe size changes with HTML elements using ResizeObserver. Finally, in part 3 will touch on a more specialized use-case of creating computed values from different screen sizes in a simple, declarative manner.
+In part 1 of this 3-part series, we'll explore the logic used in [vue-screen-utils](https://github.com/nathanreyes/vue-screen-utils) to evaluate simple media queries. In part 2, we'll explore how it is used to observe size changes with HTML elements using ResizeObserver. Finally, in part 3 will touch on a more specialized use-case of creating computed values from different screen sizes in a simple, declarative manner.
 
 To get started, import the package into your Vue application.
 
@@ -67,11 +65,9 @@ const mediaQuery = '(max-width: 400px)';
 let mediaQueryList = null;
 
 onMounted(() => {
-  if (window && 'matchMedia' in window) {
-    mediaQueryList = window.matchMedia(mediaQuery);
-    mediaQueryList.addEventListener('change', listener);
-    matches.value = mediaQueryList.matches;
-  }
+  mediaQueryList = window.matchMedia(mediaQuery);
+  mediaQueryList.addEventListener('change', listener);
+  matches.value = mediaQueryList.matches;
 });
 
 onUnmounted(() => {
@@ -83,11 +79,13 @@ onUnmounted(() => {
 </script>
 ```
 
-Let's quickly examine the code above. First, we really only want to know if a media query matches or not. We can create a simple `matches` ref to store that value.
+Let's quickly examine the code above.
 
-Then, we extract the media query event listener into a separate function so that it can be easily cleaned up when the component is unmounted (end of the script section).
+First, we really only want to know if a media query matches or not. We can create a simple `matches` ref to store that value.
 
-Then, we create the query and register the media query handler just as before. There is some extra protection added to verify that the `matchMedia` api is supported. Also, we wait until the component is mounted to ensure that the `window` is available.
+Then we extract the media query event listener into a separate function so that it can be easily cleaned up when the component is unmounted (end of the script).
+
+Finally, we create the query and register the media query handler just like before. Also, we wait until the component is mounted to ensure that the `window` is available.
 
 ## Refactor
 
@@ -103,7 +101,7 @@ const { matches } = useMediaQuery('(max-width: 400px)');
 </script>
 ```
 
-Here, there is clearly less mental overhead involved in understanding the objective, which is simply evaluating a query. Less code allows our component to be more easily understood in real-world use, and makes working with media queries more maintainable since it is relegated to a single function.
+Here, there is clearly less mental overhead involved in understanding the primary objective, which is evaluating a media query. Less code allows our component to be more easily understood in real-world use and makes working with media queries more maintainable since it is relegated to a single function.
 
 ```js
 // useMediaQuery.ts
@@ -140,8 +138,22 @@ export function useMediaQuery(query: string, callback: (ev?: MediaQueryListEvent
 }
 ```
 
-The function is almost identical to the code we had in the Vue component. This time, we extract the code for removing the event listener into a separate function so that it can be exported for the consumer to manually call if desired. We still cleanup in `onUnmounted` so manually calling `cleanup` would not be commonly needed.
+The function is very similar to the code we had in the Vue component.
 
-Also, we want to support passing though a callback function, just in case the consumer is interested in inspecting the raw event data. The callback is wrapped into a separate callback function so that the exported `matches` ref can be updated.
+First, we want to support passing a callback function, just in case the consumer is interested in inspecting the raw event data. The callback function argument is wrapped into a separate function so that the exported `matches` ref can be updated.
+
+Another item of note is we extract the code for removing the event listener into a separate function so that it can be exported for the consumer to manually call if desired. We still cleanup in `onUnmounted` so manually calling `cleanup` would not be commonly needed.
 
 ## Wrap-up
+
+In part 1 of this series, we showed a simple use of the `window.matchMedia` function. Then we adapted the logic for use into a Vue component. Finally, we saw how the logic could be extracted into a `useMediaQuery` function to be re-used and easily maintained.
+
+In face, this is the same function that `vue-screen-utils` provides.
+
+```js
+import { useMediaQuery } from 'vue-screen-utils';
+
+const { matches } = useMediaQuery('(max-width: 400px)');
+```
+
+In part 2, we'll apply many of the same concepts for observing element size changes using the `ResizeObserver` api.
