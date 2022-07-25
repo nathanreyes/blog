@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Article } from '@/types';
+
 const projects = [
   {
     icon: resolveComponent('IconCalendar'),
@@ -21,7 +23,7 @@ const projects = [
 ];
 
 const { data: articles } = await useAsyncData('articles', () =>
-  queryContent('/articles').where({ published: true }).sort({ date: 0 }).limit(4).find()
+  queryContent<Article>('/articles').where({ published: true }).sort({ date: 0 }).limit(4).find()
 );
 </script>
 
@@ -71,7 +73,7 @@ const { data: articles } = await useAsyncData('articles', () =>
       <div>
         <h4 class="text-2xl text-gray-800 pb-6 border-b font-extrabold">Latest articles</h4>
         <div class="space-y-10 mt-6">
-          <ArticleListItem v-for="article in articles" :key="article.date" :article="article" />
+          <ArticleListItem v-for="article in articles" :key="article.title" :article="article" />
         </div>
       </div>
     </div>

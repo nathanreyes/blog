@@ -2,8 +2,8 @@
 interface Article {
   title: string;
   summary: string;
-  date: string;
-  _path: string;
+  date: Date;
+  _path?: string;
 }
 interface Props {
   article: Article;
