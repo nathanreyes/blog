@@ -21,7 +21,7 @@ const projects = [
 ];
 
 const { data: articles } = await useAsyncData('articles', () =>
-  queryContent('/articles').where({ published: true }).limit(4).find()
+  queryContent('/articles').where({ published: true }).sort({ date: 0 }).limit(4).find()
 );
 </script>
 
