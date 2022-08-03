@@ -85,7 +85,7 @@ First, we really only want to know if a media query matches or not. We can creat
 
 Then we extract the media query event listener into a separate function so that it can be easily cleaned up when the component is unmounted (end of the script).
 
-Finally, we create the query and register the media query handler just like before. Also, we wait until the component is mounted to ensure that the `window` is available.
+Finally, we create the query and register the media query handler just like before. Also, we wait until the component is mounted to ensure that the `window` is more likely available.
 
 ## Refactor
 
@@ -105,50 +105,53 @@ Here, there is clearly less mental overhead involved in understanding the primar
 
 ```js
 // useMediaQuery.ts
-import { ref, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 
 export function useMediaQuery(query: string, callback: (ev?: MediaQueryListEvent) => void) {
   let mediaQuery: MediaQueryList | undefined;
-  const isSupported = window && 'matchMedia' in window;
   const matches = ref(false);
 
   // Wrap optional callback to assign `matches`
-  const _callback = (ev: MediaQueryListEvent) => {
+  function listener(ev: MediaQueryListEvent) {
     if (callback) callback(ev);
     matches.value = ev.matches;
-  };
+  }
 
-  const cleanup = () => {
+  function cleanup() {
     if (mediaQuery) {
-      mediaQuery.removeEventListener('change', _callback);
+      mediaQuery.removeEventListener('change', listener);
       mediaQuery = undefined;
     }
-  };
-  cleanup();
-
-  if (isSupported && query) {
-    mediaQuery = window.matchMedia(query);
-    mediaQuery.addEventListener('change', _callback);
-    matches.value = mediaQuery.matches;
   }
+
+  function setup(newQuery = query) {
+    cleanup();
+    if (window && 'matchMedia' in window && newQuery) {
+      mediaQuery = window.matchMedia(newQuery);
+      mediaQuery.addEventListener('change', listener);
+      matches.value = mediaQuery.matches;
+    }
+  }
+
+  onMounted(() => setup());
 
   onUnmounted(() => cleanup());
 
-  return { matches, cleanup };
+  return { matches, setup, cleanup };
 }
 ```
 
 The function is very similar to the code we had in the Vue component.
 
-First, we want to support passing a callback function, just in case the consumer is interested in inspecting the raw event data. The callback function argument is wrapped into a separate function so that the exported `matches` ref can be updated.
+First, we want to support passing a callback function, just in case the consumer is interested in inspecting the raw event data. The callback function argument is wrapped into a the separate `listener()` function so that the exported `matches` ref can be updated.
 
-Another item of note is we extract the code for removing the event listener into a separate function so that it can be exported for the consumer to manually call if desired. We still cleanup in `onUnmounted` so manually calling `cleanup` would not be commonly needed.
+Another item of note is we extract the code for adding and removing the event listener into separate functions so that they can be exported for the consumer to manually call if desired. We still call `setup()` in `onMounted` and `cleanup()` in `onUnmounted`, so manually calling is most likely not necessary.
 
 ## Wrap-up
 
-In part 1 of this series, we showed a simple use of the `window.matchMedia` function. Then we adapted the logic for use into a Vue component. Finally, we saw how the logic could be extracted into a `useMediaQuery` function to be re-used and easily maintained.
+In part 1 of this series, we showed a simple use of the `window.matchMedia` function. Then, we adapted the logic for use into a Vue component. Finally, we saw how the logic could be extracted into a `useMediaQuery` composable function to be re-used and easily maintained.
 
-In face, this is the same function that `vue-screen-utils` provides.
+In fact, this is the same function that `vue-screen-utils` provides. But now you can build it yourself.
 
 ```js
 import { useMediaQuery } from 'vue-screen-utils';
