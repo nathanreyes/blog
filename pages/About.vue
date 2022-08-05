@@ -1,6 +1,6 @@
 <template>
-  <main class="max-w-3xl px-4 mx-auto">
-    <div class="space-y-10 my-6">
+  <main class="max-w-3xl mx-auto px-4 pt-6 pb-8">
+    <div class="space-y-10">
       <!--Summary-->
       <div class="space-y-8">
         <h2 class="text-3xl font-bold mb-2">About</h2>

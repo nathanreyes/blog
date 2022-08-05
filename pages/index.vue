@@ -28,7 +28,7 @@ const { data: articles } = await useAsyncData('articles', () =>
 </script>
 
 <template>
-  <main class="max-w-3xl mx-auto pb-8">
+  <main class="max-w-3xl mx-auto px-4 pb-8">
     <!--Intro-->
     <div class="py-12">
       <div class="flex space-x-14">
