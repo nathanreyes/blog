@@ -1,21 +1,17 @@
 ---
-title: 'Vue Screen Utils: Part 1'
+title: 'Vue Screen Utils: Deep Dive, Part 1'
 summary: In part 1 of this 3-part series, I'll share how this utility is used to evaluate simple media queries.
 date: 2022-07-21T05:00:00.000Z
 published: true
 ---
 
-# Vue Screen Utils: Part 1
+# Vue Screen Utils: Deep Dive, Part 1
 
 [Media queries](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia) and [ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) are some of the most useful ways to get notifications about size and layout changes in your web application. With Vue 3, we can harness their power in some pretty interesting ways.
 
 In part 1 of this 3-part series, we'll explore the logic used in [vue-screen-utils](https://github.com/nathanreyes/vue-screen-utils) to evaluate simple media queries. In part 2, we'll explore how it is used to observe size changes with HTML elements using ResizeObserver. Finally, in part 3 will touch on a more specialized use-case of creating computed values from different screen sizes in a simple, declarative manner.
 
-To get started, import the package into your Vue application.
-
-```sh
-npm i vue-screen-utils
-```
+If you just want to use the plugin, you can reference the [README](https://github.com/nathanreyes/vue-screen-utils) to learn more.
 
 ## Media queries
 
@@ -159,4 +155,4 @@ import { useMediaQuery } from 'vue-screen-utils';
 const { matches } = useMediaQuery('(max-width: 400px)');
 ```
 
-In part 2, we'll apply many of the same concepts for observing element size changes using the `ResizeObserver` api.
+In [part 2](./vue-screen-utils-2), we'll apply many of the same concepts for observing element size changes using the `ResizeObserver` API.

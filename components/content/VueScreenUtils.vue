@@ -27,7 +27,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="flex space-x-2 px-4 py-2 bg-gray-100 border rounded-md">
+  <Example>
     <span class="font-bold">Matches:</span><span>{{ matches }}</span>
-  </div>
+  </Example>
 </template>

@@ -64,17 +64,17 @@
       <!--Projects-->
       <div class="space-y-4">
         <h4 class="uppercase text-sm font-semibold tracking-wide text-gray-400">Projects</h4>
-        <p class="font-semibold text-gray-600 leading-8">
+        <p class="font-semibold leading-8">
           <a href="https://vcalendar.io" class="text-accent-500 hover:text-accent-300 underline" target="_blank"
             >V-Calendar</a
           >, an elegant calendar and datepicker plugin for Vue.
         </p>
-        <p class="font-semibold text-gray-600 leading-8">
+        <p class="font-semibold leading-8">
           <a href="https://vcalendar.io" class="text-accent-500 hover:text-accent-300 underline" target="_blank"
             >GifMyCoffee</a
           >, a free coffee timer app that helps people brew various coffee recipes using gifs.
         </p>
-        <p class="font-semibold text-gray-600 leading-8">
+        <p class="font-semibold leading-8">
           <a href="https://vcalendar.io" class="text-accent-500 hover:text-accent-300 underline" target="_blank"
             >Vue Screen Utils</a
           >, a dependency-free collection of utility plugins and functions for using media queries in Vue 3.

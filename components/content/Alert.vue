@@ -1,6 +1,14 @@
+<script setup lang="ts">
+defineProps({
+  title: { type: String, default: 'Note' },
+});
+</script>
+
 <template>
-  <div class="px-3 py-2 bg-green-50 rounded-lg">
-    <h4 class="text-green-700 font-bold">Tip</h4>
-    <slot />
+  <div class="not-prose pl-6 border-l-2 border-accent-400">
+    <h4 class="text-sm text-accent-400 font-bold tracking-wide uppercase">{{ title }}</h4>
+    <div class="text-gray-500 dark:text-gray-300 mt-3">
+      <slot />
+    </div>
   </div>
 </template>
