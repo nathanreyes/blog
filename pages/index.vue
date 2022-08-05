@@ -69,7 +69,7 @@ const { data: articles } = await useAsyncData('articles', () =>
       </div>
       <!--Projects-->
       <div>
-        <h4 class="text-2xl pb-6 border-b font-extrabold">Projects</h4>
+        <h4 class="text-2xl pb-6 border-b font-extrabold dark:border-gray-600">Projects</h4>
         <div class="space-y-6 mt-6">
           <div v-for="{ icon, title, summary, url } in projects" class="flex items-start space-x-5 h-12">
             <component :is="icon" class="flex-shrink-0 w-5 h-5 text-accent-300 dark:text-accent-500" />
@@ -87,7 +87,7 @@ const { data: articles } = await useAsyncData('articles', () =>
         </div>
       </div>
       <div>
-        <h4 class="text-2xl pb-6 border-b font-extrabold">Latest articles</h4>
+        <h4 class="text-2xl pb-6 border-b font-extrabold dark:border-gray-600">Latest articles</h4>
         <div class="space-y-10 mt-6">
           <ArticleListItem v-for="article in articles" :key="article.title" :article="article" />
         </div>
