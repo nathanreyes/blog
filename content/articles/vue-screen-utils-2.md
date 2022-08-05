@@ -215,6 +215,8 @@ However, there is a lot of code here. We definitely want to extract it into a co
 Much like [part 1](./vue-screen-utils), we can first express the desired API.
 
 ```vue
+<!-- ParentComponent.vue -->
+
 <template>
   <div>
     <textarea ref="textarea" :value="textContent" rows="10" />
@@ -234,6 +236,8 @@ const textContent = computed(() => JSON.stringify(rect.value || '', null, 2));
 If we simply copy the code we had into a separate function (with slight adjustments), we are left with the following code.
 
 ```js
+// src/use/resizeObserver.js
+
 import { ref, watch, onUnmounted } from 'vue';
 
 export function useResizeObserver(target, options = {}) {
@@ -276,6 +280,8 @@ export function useResizeObserver(target, options = {}) {
 The first change we made was adding an `options` parameter that gets passed when observing the target value.
 
 ```js
+// src/use/resizeObserver.js
+
 export function useResizeObserver(target, options = {}) {
   // ...
   if (window && 'ResizeObserver' in window && val) {
@@ -286,7 +292,17 @@ export function useResizeObserver(target, options = {}) {
 }
 ```
 
-Also, note that we export the `rect` ref and the `cleanup()` function to support manual cleanup by the consumer.
+This would allow the consumer to observe `boder-box` or `device-pixel-content-box` box models.
+
+```js
+// ParentComponent.vue
+
+import { useResizeObserver } from '@/use/resizeObserver';
+// ...
+const { rect } = useResizeObserver(textarea, { box: 'border-box' });
+```
+
+Finally, note that we export the `rect` ref and the `cleanup()` function to support manual cleanup by the consumer.
 
 ### Handle custom callback
 
@@ -333,7 +349,7 @@ const stopWatch = watch(
   () => target.value,
   (elOrComp) => {
     stopObserver();
-    if (isSupported && elOrComp) {
+    if (window && 'ResizeObserver' in window && elOrComp) {
       observer = new ResizeObserver(listener);
       observer.observe(elOrComp.$el ?? elOrComp, resizeOptions);
     }
