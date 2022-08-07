@@ -1,6 +1,6 @@
 ---
 title: 'Vue Screen Utils: Deep Dive, Part 1'
-summary: In part 1 of this 3-part series, I'll share how this utility is used to evaluate simple media queries.
+summary: In part 1 of this 3-part series, I'll share how `vue-screen-utils` evaluates simple media queries.
 date: 2022-07-21T05:00:00.000Z
 published: true
 ---

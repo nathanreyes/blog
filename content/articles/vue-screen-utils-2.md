@@ -1,6 +1,6 @@
 ---
 title: 'Vue Screen Utils: Deep Dive, Part 2'
-summary: In part 2 of this 3-part series, I'll share how this utility is used to observe size changes with HTML elements using ResizeObserver.
+summary: In part 2 of this 3-part series, I'll share how `vue-screen-utils` observes size changes with HTML elements using ResizeObserver.
 date: 2022-08-05T05:00:00.000Z
 published: true
 ---
